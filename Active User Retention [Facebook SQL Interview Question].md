@@ -1,12 +1,14 @@
 Solution:
 ```sql
-SELECT date_part('month', event_date),
-count(DISTINCT user_id) monthly_active_users
-FROM  user_actions
-where user_id in (
-select user_id from user_actions
-where date_part('month',event_date) = 6)
-and 
-date_part('month',event_date) = 7
-GROUP BY 1
+with cte as(
+SELECT *, extract(month from event_date) as mth
+FROM user_actions 
+)
+
+
+select mth as month, count(distinct user_id) as monthly_active_users from cte 
+where mth = 7 and user_id in (select user_id from cte 
+where mth = 6
+)
+GROUP BY mth
 ```
