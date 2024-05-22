@@ -13,7 +13,6 @@ from
 (select artist_name, count(*) as cnt from cte 
 group by artist_name ) as x 
 )
-
 select artist_name , rnk from cte2
 where rnk < 6
 ```
