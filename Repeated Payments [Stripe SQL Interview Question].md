@@ -10,9 +10,6 @@ OVER(PARTITION BY merchant_id,credit_card_id,amount ORDER BY transaction_timesta
 FROM transactions
 )
 
-
-
-
 select count(1) as payment_count from (select transaction_id, 
 ROUND(EXTRACT(epoch FROM AGE(transaction_timestamp, prev_date)) / 60,0) 
 AS 
