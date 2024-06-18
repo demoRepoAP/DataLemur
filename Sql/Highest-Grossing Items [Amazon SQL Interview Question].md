@@ -10,8 +10,6 @@ where EXTRACT(YEAR FROM transaction_date) = 2022
 group by category, product
 
 )
-
-
 select category, product, total_spend from cte 
 where rnk <= 2
 ``` 
