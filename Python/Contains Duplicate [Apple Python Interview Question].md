@@ -9,7 +9,6 @@ def contains_duplicate(input)-> bool:
     if i in list_con:
       return True
     list_con.append(i)
-    
   return False 
 ```
 
