@@ -11,7 +11,6 @@ from employee as e
 inner join salary as s on e.employee_id = s.employee_id
 where extract(month from payment_date) = 3
 )
-
 select distinct department_id, TO_CHAR(payment_date, 'MM-YYYY'),
 case when dept_avg > avg then 'higher' 
 when dept_avg < avg then 'lower' else 'Same'
