@@ -29,7 +29,6 @@ open from stock_prices
 select ticker, to_char(date,'Mon-YYYY') as date_month,
 rank() over (PARTITION BY ticker order by open) as low_rnk, open from stock_prices 
 )
-
 select h.ticker, h.date_month as highest_mth, h.open, l.date_month as lowest_mth , l.open
 from high_open as h inner join low_open as l on h.ticker = l.ticker
 where high_rnk = 1 and low_rnk = 1
